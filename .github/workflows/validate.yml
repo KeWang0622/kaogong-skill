@@ -14,9 +14,9 @@ jobs:
     name: Agent Skills spec compliance
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -40,9 +40,16 @@ jobs:
     name: External links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check markdown links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --no-progress --max-retries 2 --accept 200,206,403,429 './**/*.md'
+          # Chinese government sites (scs.gov.cn, gov.cn, 12371.cn …) routinely refuse
+          # connections from GitHub's runners, so they report as broken even when live.
+          # They are the project's most important citations — exclude rather than lose signal.
+          args: >-
+            --no-progress --max-retries 2 --accept 200,206,403,429
+            --exclude-path dist/
+            --exclude '.*\.gov\.cn.*' --exclude '.*12371\.cn.*' --exclude '.*chinagwy\.org.*'
+            './**/*.md'
           fail: false
