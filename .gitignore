@@ -24,10 +24,12 @@ npm-debug.log*
 __pycache__/
 *.py[cod]
 *.egg-info/
-dist/
-build/
 .venv/
 venv/
+
+# NOTE: dist/ is NOT ignored — it holds the generated single-file builds
+# (dist/kaogong-*.md) that non-filesystem platforms install from, and CI
+# verifies they stay in sync with skills/.
 
 # Logs
 *.log
