@@ -1,0 +1,51 @@
+name: 内容纠错 Content error
+description: 报告考试内容、评分标准或政策信息有误
+title: "[内容] "
+labels: ["content", "needs-verification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢纠错！本项目服务真实考生，内容准确性最重要。
+        **请尽量附上官方出处**——这能让修正快很多。
+  - type: input
+    id: location
+    attributes:
+      label: 出错位置
+      description: 哪个文件、哪一节？
+      placeholder: skills/kaogong/references/xingce.md → 考试概况
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: 当前内容（错误的）
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: 正确内容应该是
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: 依据来源
+      description: 官方文件名 / 文号 / 链接。逐年变化的信息请注明年份。
+      placeholder: |
+        《公务员录用规定》（2019年修订）第十八条
+        https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: 来源可信度
+      options:
+        - 🟢 官方（法律法规、部委文件、政府公告）
+        - 🟡 权威媒体（新华社、人民网等）
+        - 🟠 行业整理（培训机构统计）
+        - 不确定
+    validations:
+      required: true

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 安装遇到问题？
+    url: https://github.com/KeWang0622/kaogong-skill/blob/main/docs/INSTALL.md
+    about: 先看各客户端的安装路径对照表
+  - name: 💬 使用交流与提问
+    url: https://github.com/KeWang0622/kaogong-skill/discussions
+    about: 备考经验、使用心得、非 Bug 的提问都欢迎发在这里

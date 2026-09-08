@@ -1,0 +1,48 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Agent Skills spec compliance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate skills, commands and manifests
+        run: python3 scripts/validate.py
+
+      - name: Verify dist/ is in sync with skills/
+        run: |
+          python3 scripts/build-bundle.py
+          if ! git diff --quiet -- dist/; then
+            echo "::error::dist/ is out of date. Run 'python3 scripts/build-bundle.py' and commit the result."
+            git diff --stat -- dist/
+            exit 1
+          fi
+          echo "dist/ is up to date"
+
+      - name: Check installer script
+        run: bash -n scripts/install.sh
+
+  links:
+    name: External links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check markdown links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-retries 2 --accept 200,206,403,429 './**/*.md'
+          fail: false

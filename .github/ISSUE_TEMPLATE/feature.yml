@@ -1,0 +1,22 @@
+name: 功能建议 Feature request
+description: 希望增加新的题型、模块或能力
+title: "[建议] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你在备考中遇到了什么问题？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 希望这个技能怎么帮你
+    validations:
+      required: true
+  - type: input
+    id: exam
+    attributes:
+      label: 相关考试类型
+      placeholder: 国考 / 省考（哪个省）/ 事业编 / 选调生

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "kaogong",
+  "owner": { "name": "Ke Wang", "url": "https://github.com/KeWang0622" },
+  "description": "考公AI导师 — 公务员考试备考技能 / Chinese civil service exam prep skills.",
+  "version": "2.0.0",
+  "plugins": [
+    {
+      "name": "kaogong-skill",
+      "source": "./",
+      "displayName": "考公AI导师 Kaogong Tutor",
+      "description": "免费的公务员考试 AI 导师：行测训练、申论批改、面试模拟、时政分析、报考选岗、学习计划。",
+      "version": "2.0.0",
+      "author": { "name": "Ke Wang", "url": "https://github.com/KeWang0622" },
+      "homepage": "https://github.com/KeWang0622/kaogong-skill",
+      "repository": "https://github.com/KeWang0622/kaogong-skill",
+      "license": "MIT",
+      "category": "education",
+      "keywords": ["kaogong", "考公", "公务员考试", "行测", "申论", "面试", "exam-prep"]
+    }
+  ]
+}

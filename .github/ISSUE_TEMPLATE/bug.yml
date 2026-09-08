@@ -1,0 +1,38 @@
+name: Bug 报告
+description: 技能无法激活、命令不生效、脚本报错
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: client
+    attributes:
+      label: 使用的客户端
+      options:
+        - Claude Code
+        - Claude (web / desktop)
+        - ChatGPT / Codex
+        - Cursor
+        - Gemini CLI
+        - GitHub Copilot / VS Code
+        - 其他（请在描述中说明）
+    validations:
+      required: true
+  - type: input
+    id: install
+    attributes:
+      label: 安装方式与路径
+      placeholder: ~/.agents/skills/kaogong（或：插件市场安装）
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 问题描述
+      description: 你做了什么？期望结果是什么？实际结果是什么？
+    validations:
+      required: true
+  - type: textarea
+    id: validate
+    attributes:
+      label: "`python3 scripts/validate.py` 的输出"
+      render: shell
