@@ -131,7 +131,7 @@ def main() -> int:
     for reference in sorted((ROOT / "skills").glob("*/references/*.md")):
         check_links(reference, reference.read_text(encoding="utf-8"))
 
-    for document in [ROOT / "README.md", ROOT / "CONTRIBUTING.md", *sorted((ROOT / "docs").glob("*.md"))]:
+    for document in [*sorted(ROOT.glob("README*.md")), ROOT / "CONTRIBUTING.md", *sorted((ROOT / "docs").glob("*.md"))]:
         check_links(document, document.read_text(encoding="utf-8"))
 
     plugin = ROOT / ".claude-plugin" / "plugin.json"
