@@ -10,7 +10,7 @@
 [![Checks](https://img.shields.io/github/actions/workflow/status/KeWang0622/kaogong-skill/validate.yml?branch=main&style=flat-square&label=checks)](https://github.com/KeWang0622/kaogong-skill/actions/workflows/validate.yml)
 [![GitHub stars](https://img.shields.io/github/stars/KeWang0622/kaogong-skill?style=flat-square&label=stars)](https://github.com/KeWang0622/kaogong-skill/stargazers)
 
-[开始使用](#start) · [能练什么](#subjects) · [更多例子](docs/EXAMPLES.md) · [安装指南](docs/INSTALL.md) · [English](README_EN.md)
+[开始使用](#start) · [能练什么](#subjects) · [更多例子](docs/EXAMPLES.md) · [安装指南](docs/INSTALL.md) · [Star History](#star-history) · [English](README_EN.md)
 
 </div>
 
@@ -182,6 +182,22 @@ bash -n scripts/install.sh
 </details>
 
 如果它帮你弄懂了一道题，欢迎把这个仓库分享给一起备考的人。也欢迎点个 ⭐，回来时更容易找到。
+
+<a id="star-history"></a>
+
+## Star History ⭐
+
+谢谢每一位收藏、分享和参与改进的朋友。点击曲线，可查看交互版增长记录。
+
+<div align="center">
+  <a href="https://www.star-history.com/?repos=KeWang0622%2Fkaogong-skill&amp;type=date">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=KeWang0622/kaogong-skill&amp;type=Date&amp;theme=dark" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=KeWang0622/kaogong-skill&amp;type=Date" />
+      <img alt="考公 AI 导师的 GitHub Star 增长曲线" src="https://api.star-history.com/svg?repos=KeWang0622/kaogong-skill&amp;type=Date" width="800" />
+    </picture>
+  </a>
+</div>
 
 ---
 
