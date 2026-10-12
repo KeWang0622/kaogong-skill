@@ -1,32 +1,66 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="考公AI导师 — 公务员与事业单位备考" width="100%">
+# 考公 AI 导师
 
-[![Stars](https://img.shields.io/github/stars/KeWang0622/kaogong-skill?style=for-the-badge&labelColor=0a1020&color=e0483d)](https://github.com/KeWang0622/kaogong-skill/stargazers)
-[![License](https://img.shields.io/badge/License-MIT-c8b98a?style=for-the-badge&labelColor=0a1020)](LICENSE)
-[![Validate](https://img.shields.io/github/actions/workflow/status/KeWang0622/kaogong-skill/validate.yml?style=for-the-badge&labelColor=0a1020&label=CI)](https://github.com/KeWang0622/kaogong-skill/actions/workflows/validate.yml)
+**一道题讲明白，一份答案改具体。**
 
-**免费的公务员与事业单位 AI 备考技能**
+公务员 · 事业单位 · 免费开源
 
-`行测` · `申论` · `职测` · `综应` · `公基` · `公文` · `面试` · `时政` · `报考` · `错题复盘`
+[![License: MIT](https://img.shields.io/badge/license-MIT-2f6f62?style=flat-square)](LICENSE)
+[![Checks](https://img.shields.io/github/actions/workflow/status/KeWang0622/kaogong-skill/validate.yml?branch=main&style=flat-square&label=checks)](https://github.com/KeWang0622/kaogong-skill/actions/workflows/validate.yml)
+[![GitHub stars](https://img.shields.io/github/stars/KeWang0622/kaogong-skill?style=flat-square&label=stars)](https://github.com/KeWang0622/kaogong-skill/stargazers)
 
-[开始使用](#开始使用) · [功能](#能帮你做什么) · [使用示例](#直接复制这些话开始) · [内容依据](#内容依据与能力边界) · [贡献](CONTRIBUTING.md)
+[开始使用](#start) · [能练什么](#subjects) · [更多例子](docs/EXAMPLES.md) · [安装指南](docs/INSTALL.md) · [English](README_EN.md)
 
 </div>
 
-## 开始使用
+做题之后，最费劲的往往是弄清楚：为什么选错了？申论漏了哪层意思？下次遇到类似的题，应该先看哪里？
 
-这是给 AI 客户端使用的技能包，包含教学流程与参考资料。项目本身免费开源；所用 AI 平台可能收费。它不是独立题库网站，也不要求注册本站账号。
+这个项目把出题、讲解、批改和复盘的流程整理成一个 **AI 技能包**。把它交给你正在用的 AI，就可以从一道题开始，接着追问、修改答案、再练一次。考国考、省考或事业编，都可以先说明自己的目标。
 
-### 手机 / 网页聊天：先体验
+项目按 [Agent Skills](https://agentskills.io/) 标准组织；手机和网页用户也可以用单文件版。技能本身免费，所用 AI 平台可能收费。
 
-1. 打开 [精简版](dist/kaogong-compact.md)，复制正文到你的 AI 对话中，并说明“请按这些规则辅导我”。
-2. 支持文件上传时，再上传 [完整版](dist/kaogong-full.md) 作为参考；仅粘贴精简版不含详细知识库。
-3. 发送：“我准备事业单位 A 类考试，先给我一道职测题，等我回答再解析。”
+## 先看一次讲题 ✍️
 
-不同平台的上下文、上传和联网能力有差异。粘贴提示词是一种体验方式；复制本地技能目录不会自动安装到手机或网页聊天。支持自定义指令/知识文件的环境可分别使用精简版和完整版，具体入口见 [安装指南](docs/INSTALL.md)。
+下面是一个根据仓库原创题编写的**交互示例**，用来说明辅导方式；不同模型的实际回答会有差异。
 
-### Codex / Claude Code 等支持技能的客户端
+> **你**：给我一道职测数量题，先别告诉我答案。
+>
+> **导师**：某服务中心本月办理业务 660 件，比上月增长 10%。上月办理多少件？
+>
+> A. 594　B. 600　C. 650　D. 726
+>
+> **你**：A。我用 660 减去它的 10%。
+>
+> **导师**：应该选 B，600 件。关键在于，这个 10% 是按**上月**计算的。
+>
+> 设上月为 x，本月就是 x × 1.1 = 660，所以 x = 600。你减去的是 660 的 10%，把计算增长率的基数换了。
+>
+> 下次先找“比谁增长”，那个量才是基期。用同一组数据再试一下：本月比上月多办了多少件？
+
+你也可以把自己的题目和思路发过来。批改申论、综应时，请一并提供题干、材料和答案，这样反馈才能对应到具体内容。
+
+<a id="start"></a>
+
+## 开始使用 🚀
+
+### 手机 / 网页聊天
+
+1. 打开 [精简版](dist/kaogong-compact.md)，复制正文发给 AI，加一句“请按这些规则辅导我”。
+2. 如果支持上传文件，再上传 [完整版](dist/kaogong-full.md)，里面包含各科参考资料。
+3. 说出你今天想练的内容，例如：
+
+```text
+我准备考事业单位 A 类，每天能学一小时。
+今天先练一道职测判断题，等我回答后再解析。
+```
+
+只用精简版也能体验教学流程。文件上传、自定义指令等具体用法见 [安装指南](docs/INSTALL.md)。
+
+<details>
+<summary><b>Codex、Claude Code 等本地客户端</b></summary>
+
+在终端运行：
 
 ```bash
 git clone https://github.com/KeWang0622/kaogong-skill.git
@@ -34,91 +68,107 @@ cd kaogong-skill
 ./scripts/install.sh
 ```
 
-脚本询问目标位置。也可指定目录，例如 Codex：
+按提示选择安装位置。Codex 也可以直接指定：
 
 ```bash
 ./scripts/install.sh ~/.agents/skills
 ```
 
-装好后用自然语言提问；Codex 可显式输入 `$kaogong`。其他客户端的安装路径与触发方式见 [安装指南](docs/INSTALL.md)。同一份技能目录可用于兼容 Agent Skills 的客户端，功能取决于宿主能力；本项目没有逐一验证所有客户端。
+安装后用自然语言提问，或在 Codex 中输入 `$kaogong`。更多客户端路径、更新与卸载方式见 [安装指南](docs/INSTALL.md)。
 
-### Claude Code 插件：12 个快捷命令
+</details>
+
+<details>
+<summary><b>Claude Code 插件安装</b></summary>
+
+在 Claude Code 中运行：
 
 ```text
 /plugin marketplace add KeWang0622/kaogong-skill
 /plugin install kaogong-skill@kaogong
 ```
 
-下表为本仓库定义的命令名；插件命令在客户端中可能带命名空间，以命令菜单为准。只安装技能目录的用户直接用自然语言即可。
+插件带有 12 个快捷命令，见 [命令速查](docs/COMMANDS.md)。命令可能带插件命名空间，以客户端菜单为准。
 
-## 能帮你做什么
+</details>
 
-| 命令 | 模块 | 训练方式 |
-|---|---|---|
-| `/kaogong` | 入门诊断 | 识别国考、省考、事业单位及目标类别，确定学习入口 |
-| `/kaogong-xingce` | 行测 | 政治理论、常识、言语、数量、判断、资料分析 |
-| `/kaogong-shenlun` | 申论 | 材料要点分析、应用文与议论文，按训练量表批改 |
-| `/kaogong-zhice` | 职测 | 按事业单位类别训练，复用解题方法并核对考纲差异 |
-| `/kaogong-zongying` | 综应 | A—E 分类导航，管理、社科、科技、教育及医疗任务 |
-| `/kaogong-gongji` | 公基 | 知识讲解、单选/多选/判断及当地大纲要求的材料题 |
-| `/kaogong-gongwen` | 公文 | 文种辨析、行文规则、格式改错与材料写作 |
-| `/kaogong-mianshi` | 面试 | 结构化单题模拟、反馈与重答 |
-| `/kaogong-shizheng` | 时政 | 核对来源、政策联系与考试运用 |
-| `/kaogong-baokao` | 报考 | 依据目标公告逐项解读资格、科目与流程 |
-| `/kaogong-plan` | 学习计划 | 按每日可用时间安排学习、练习与复盘 |
-| `/kaogong-review` | 错题复盘 | 错因、变式练习、复测安排与可复制学习卡 |
+<a id="subjects"></a>
 
-**先匹配考试，再训练。** 事业单位不一定考“职测 + 综应”，公基也不是所有岗位的统一第三科。A—E 分类只用于采用相应大纲的招聘；省考 A/B/C 卷不能直接对应事业单位类别。
+## 能练什么
 
-## 直接复制这些话开始
-
-| 想做什么 | 可以这样说 |
+| 你的目标 | 可以一起练 |
 |---|---|
-| 了解考什么 | “我是新手，准备考事业编，还不知道职测、综应、公基有什么区别。” |
-| 职测 | “我考事业单位 B 类，给我一道论证题，先不要给答案。” |
-| 综应 | “给我一道综应 A 类协调处理题，说明身份、材料和字数限制。” |
-| 公基 | “出一道公基公文多选题，先说明本次训练的漏选规则。” |
-| 公文 | “请示和报告怎么区分？先讲清楚，再给我一道改错题。” |
-| 直接批改 | “这是题干、材料和我的作答，请逐条对照材料批改，并说明评分是否属于训练估计。” |
-| 复盘 | “整理这次做错和犹豫的题，给我一张下次可以复制回来继续练的学习卡。” |
-| 在职备考 | “距离考试 45 天，每天 60 分钟，考公基和写作，帮我安排含复盘的第一周计划。” |
+| **公务员笔试** | 行测六个部分；申论概括、分析、对策、应用文与议论文 |
+| **事业单位笔试** | 职测、综应 A—E 分类训练；按当地大纲练公共基础知识 |
+| **公文专项** | 请示与报告等文种辨析、行文规则、格式改错、材料写作 |
+| **面试** | 结构化题目、作答点评、参考框架，再练一遍 |
+| **报考与时政** | 一起读目标公告、核对条件，把政策和新闻放回考试情境 |
+| **日常复习** | 按可用时间排计划，整理错题，导出下次继续用的学习卡 |
 
-练习默认一次一题、作答后解析；需要直接讲题、参考答案或套题时明确说明。用户已给出的类别、题目和答案会直接使用，不重复入门问卷。
+事业单位各地考法不同，最好带上**地区、年份、科目和岗位类别**。暂时不知道也没关系，可以先问：“我想考事业编，职测、综应、公基有什么区别？”
 
-## 内容依据与能力边界
+新加入的职测、综应、公基和公文模块，来自读者的建议。完整改动见 [更新日志](CHANGELOG.md)。
 
-- **官方事实可追溯**：[来源索引](skills/kaogong/references/SOURCES.md)列出文件、年份和适用范围。此次更新核对了 2026 国考大纲、2026 事业单位分类考试大纲、公文条例及格式标准状态。
-- **评分区分性质**：公开考纲不等于内部阅卷细则。自拟分值与权重明确标“训练量表，非官方标准”；材料证据、分项分值和合计可检查。
-- **题目先自检**：模拟题明确标为原创，要求核验条件、答案、干扰项和计算。出现歧义先修题，不强判考生错误。AI 仍可能出错，欢迎[提交纠错](https://github.com/KeWang0622/kaogong-skill/issues/new?template=content-error.yml)。
-- **专业内容有边界**：D/E 类提供分类训练入口与方法，不等同于完整教育或医学专业教材；专业结论需要核实依据。
-- **最新信息需核验**：联网时优先查目标考试官方文件；离线时说明未核验，不生成虚假的最新政策或新闻。
-- **学习记录由你掌握**：可以导出学习卡，不承诺跨会话永久记忆、自动联网更新或已设置提醒。提交公开 Issue 前请删去个人信息。
+## 除了刷题，还可以这样用
 
-本项目与考试主管部门无关，不保证录用或提分，不协助作弊。科目、资格、时间和录用安排以目标考试官方发布为准。
-
-## 项目结构与维护
+**一份答案，改到具体的句子。**
 
 ```text
-skills/kaogong/
-├── SKILL.md              # 共用规则与模式入口
-└── references/
-    ├── xingce.md         # 行测
-    ├── shenlun.md        # 申论
-    ├── zhice.md          # 职测
-    ├── zongying.md       # 综应
-    ├── gongji.md         # 公基
-    ├── gongwen.md        # 公文
-    ├── mianshi.md        # 面试
-    ├── shizheng.md       # 时政
-    ├── baokao.md         # 报考
-    ├── review.md         # 错题复盘
-    └── SOURCES.md        # 版本与来源
-commands/                # 12 个命令，统一进入主技能
-scripts/                 # 安装、校验与打包
-dist/                   # 自动生成的单文件版本，请勿手改
+这是申论题干、材料和我的答案。
+请指出哪些要点有材料依据，哪些遗漏了，最后让我重写最需要改的一段。
 ```
 
-知识按需读取；完整版单文件适用于不能按目录读文件的平台。新增参考文件遗漏打包时构建会失败，避免安装版和网页版内容不同步。
+**一道错题，练到换个问法也会做。**
+
+```text
+刚才这题我把同比和环比弄混了。
+帮我对比一下，再出一道换了数据的题，不要直接给答案。
+```
+
+**一天一小时，也要留出复盘时间。**
+
+```text
+我在职备考，距离考试 45 天，每天只有 60 分钟。
+考公基和写作，请先安排第一周，把练习和复盘都算进去。
+```
+
+[查看公文改错、综应训练和学习卡示例 →](docs/EXAMPLES.md)
+
+## 关于答案和分数
+
+考试信息值得认真对待。项目把考纲、制度文件和教学建议分开整理，方便你核对。
+
+- **看出处。** 涉及科目、资格和政策，尽量回到目标考试的官方文件；[来源索引](skills/kaogong/references/SOURCES.md)记录版本和适用范围。最新信息需要联网核验，离线时应明确说明。
+- **看材料。** 批改要说明答案对应了哪些材料要点。自拟量表会标为“训练评分”，不能当作正式考试得分。
+- **看得出问题，就提出来。** 模拟题会要求 AI 自检，但它仍可能算错或出歧义题。[提交纠错](https://github.com/KeWang0622/kaogong-skill/issues/new?template=content-error.yml)时，附上题目和疑点就很有帮助。
+
+<details>
+<summary>其他使用说明</summary>
+
+本项目与考试主管部门无关，不保证提分或录用。报名、考试与录用要求以官方公告为准。D/E 类综应提供分类入口和训练方法，专业内容还需结合相应教材核验。
+
+学习卡可以复制保存；跨对话继续时请带回记录。当前没有云端学习账户、自动提醒或进度同步。各 AI 客户端的加载、联网和文件能力有所不同，实际效果需要在自己的环境中确认。
+
+</details>
+
+## 一起把它改好 🤝
+
+职测、综应、公基、公文，就是从“能不能再加上这些”开始的。欢迎继续告诉我们，哪道题没讲清楚，哪份答案改得不对，哪个地方的考纲还缺着。
+
+**不用会写代码。** 你可以 [报一个错](https://github.com/KeWang0622/kaogong-skill/issues/new?template=content-error.yml)、[提一个需求](https://github.com/KeWang0622/kaogong-skill/issues/new?template=feature.yml)，也可以直接修改文档。提交时记得去掉姓名、电话和准考证号等个人信息。
+
+想贡献题目或代码，先看 [贡献指南](CONTRIBUTING.md)。近期优先补充经过审校的原创题、地方考纲，以及 D/E 类专业内容审校。
+
+<details>
+<summary>项目结构与本地检查</summary>
+
+| 路径 | 内容 |
+|---|---|
+| [`skills/kaogong/SKILL.md`](skills/kaogong/SKILL.md) | 主技能：教学流程与知识路由 |
+| [`skills/kaogong/references/`](skills/kaogong/references/) | 各科参考资料与来源 |
+| [`commands/`](commands/) | Claude Code 插件命令 |
+| [`dist/`](dist/) | 自动生成的精简版和完整版 |
+| [`scripts/`](scripts/) · [`tests/`](tests/) | 安装、构建与检查 |
 
 ```bash
 python3 scripts/validate.py
@@ -127,16 +177,12 @@ python3 scripts/build-bundle.py
 bash -n scripts/install.sh
 ```
 
-自动校验覆盖文件与打包完整性，不证明 AI 的实际教学效果。客户端行为验收场景见 [质量检查](docs/QUALITY.md)。
+自动检查验证文件与打包；实际教学行为的验收场景见 [质量检查](docs/QUALITY.md)。
 
-## 欢迎贡献
+</details>
 
-优先需要：地方考纲适配、带核验记录的原创题、真实使用中的错误案例、D/E 类专业内容审校。制度性事实请附具体出处；原创教学量表请说明设计，不伪称官方。
+如果它帮你弄懂了一道题，欢迎把这个仓库分享给一起备考的人。也欢迎点个 ⭐，回来时更容易找到。
 
-后续可逐步扩充经过审校的题库、地区与年度适配表，以及经用户同意的匿名反馈统计。当前版本未提供云端账户、学习数据同步或自动题库检索。
+---
 
-[贡献指南](CONTRIBUTING.md) · [更新日志](CHANGELOG.md) · [MIT License](LICENSE)
-
-## In English
-
-**kaogong-skill** is an open-source Agent Skill for Chinese civil service and public institution exam preparation. It covers aptitude tests, writing, structured interviews, public knowledge, official-document exam tasks and study review. Institutional claims cite their scope and sources; generated practice and training rubrics are labeled separately. Use a compatible local skill host or the portable Markdown bundles. Host capabilities and costs vary.
+[MIT License](LICENSE) · [更新日志](CHANGELOG.md) · [English](README_EN.md)
