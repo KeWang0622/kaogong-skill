@@ -9,7 +9,7 @@ An open-source study skill for Chinese civil service and public institution exam
 [![License: MIT](https://img.shields.io/badge/license-MIT-2f6f62?style=flat-square)](LICENSE)
 [![Checks](https://img.shields.io/github/actions/workflow/status/KeWang0622/kaogong-skill/validate.yml?branch=main&style=flat-square&label=checks)](https://github.com/KeWang0622/kaogong-skill/actions/workflows/validate.yml)
 
-[简体中文](README.md) · [Get started](#get-started) · [Examples](docs/EXAMPLES.md) · [Contribute](CONTRIBUTING.md)
+[简体中文](README.md) · [Get started](#get-started) · [Examples](docs/EXAMPLES.md) · [Star History](#star-history) · [Contribute](CONTRIBUTING.md)
 
 </div>
 
@@ -106,6 +106,22 @@ The aptitude, applied writing, public knowledge, and official-document modules g
 You do not need to write code. Open an [issue](https://github.com/KeWang0622/kaogong-skill/issues) or follow the [contribution guide](CONTRIBUTING.md). Remove personal information before sharing examples. Source citations are required for institutional claims; original exercises and training rubrics should be labeled as project work.
 
 The skill lives in [`skills/kaogong/`](skills/kaogong/); [`dist/`](dist/) is generated from it. Maintainer checks and pending behavioral acceptance cases are documented in [QUALITY.md](docs/QUALITY.md).
+
+<a id="star-history"></a>
+
+## Star History ⭐
+
+Thanks to everyone who has starred, shared, or improved the project. Click the chart to explore its growth.
+
+<div align="center">
+  <a href="https://www.star-history.com/?repos=KeWang0622%2Fkaogong-skill&amp;type=date">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=KeWang0622/kaogong-skill&amp;type=Date&amp;theme=dark" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=KeWang0622/kaogong-skill&amp;type=Date" />
+      <img alt="GitHub star history for Kaogong AI Tutor" src="https://api.star-history.com/svg?repos=KeWang0622/kaogong-skill&amp;type=Date" width="800" />
+    </picture>
+  </a>
+</div>
 
 ---
 
