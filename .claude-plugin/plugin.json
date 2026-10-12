@@ -1,15 +1,37 @@
 {
   "name": "kaogong-skill",
   "displayName": "考公AI导师 Kaogong Tutor",
-  "version": "2.0.0",
-  "description": "免费的公务员考试 AI 导师：行测训练、申论批改、面试模拟、时政分析、报考选岗、学习计划。A free AI tutor for the Chinese civil service exam.",
-  "author": { "name": "Ke Wang", "url": "https://github.com/KeWang0622" },
+  "version": "2.1.0",
+  "description": "公务员与事业单位 AI 备考：行测、申论、职测、综应、公基、公文、面试、时政、报考、学习计划与错题复盘。",
+  "author": {
+    "name": "Ke Wang",
+    "url": "https://github.com/KeWang0622"
+  },
   "homepage": "https://github.com/KeWang0622/kaogong-skill",
   "repository": "https://github.com/KeWang0622/kaogong-skill",
   "license": "MIT",
   "keywords": [
-    "kaogong", "考公", "公务员考试", "国考", "省考", "事业编",
-    "行测", "申论", "面试", "civil-service-exam", "china",
-    "education", "exam-prep", "chinese", "tutor", "agent-skill"
+    "kaogong",
+    "考公",
+    "公务员考试",
+    "国考",
+    "省考",
+    "事业编",
+    "行测",
+    "申论",
+    "面试",
+    "civil-service-exam",
+    "china",
+    "education",
+    "exam-prep",
+    "chinese",
+    "tutor",
+    "agent-skill",
+    "事业单位",
+    "职测",
+    "综应",
+    "公基",
+    "公文",
+    "错题复盘"
   ]
 }

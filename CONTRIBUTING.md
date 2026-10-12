@@ -6,7 +6,7 @@
 
 ## 🔴 最重要的一条规则
 
-> **涉及考试内容的修改，必须附上出处。没有出处的内容不予合并。**
+> **涉及制度性考试内容的修改，必须附上出处。制度性事实没有出处不予合并；原创题与教学量表应明确标注项目设计，不伪称官方。**
 
 出处按可信度分三级（与 [`skills/kaogong/references/SOURCES.md`](skills/kaogong/references/SOURCES.md) 一致）：
 
@@ -39,6 +39,10 @@
 
 ---
 
+## 新模块与教学内容
+
+新增参考文件时同步主技能路由、命令、构建脚本的参考清单和来源索引，再运行构建。每项制度性来源记录版本、地区和核验日期。原创练习附答案、解析和自检记录；自拟量表核对满分与合计。专业内容建议由相应领域审校。客户端验收场景见 [docs/QUALITY.md](docs/QUALITY.md)，不要把待运行场景写成已通过评测。
+
 ## 开发流程
 
 ```bash
@@ -51,6 +55,7 @@ git checkout -b feat/your-feature
 
 # 3. 修改后本地校验（无需安装依赖，只要 Python 3.9+）
 python3 scripts/validate.py
+python3 -m unittest discover -s tests
 
 # 4. 若改动了 skills/ 下的内容，重新生成单文件版本
 python3 scripts/build-bundle.py
@@ -83,8 +88,8 @@ skills/kaogong/
 ```
 
 - **`SKILL.md` 只写"怎么做"**：角色、原则、流程、路由。
-- **`references/` 只写"是什么"**：题型、评分标准、制度规定。
-- 新增知识请优先放进 `references/`，而不是让 `SKILL.md` 变长——它每轮对话都会占用上下文。
+- **`references/` 放专项细节**：题型、专项流程、训练量表与制度依据。
+- 新增知识请优先放进 `references/`，而不是让 `SKILL.md` 变长——主技能应保持精简，细节按需加载。
 - 修改 `references/` 后，记得在 `SOURCES.md` 补充对应来源。
 
 CI 会自动校验 Agent Skills 规范合规性（frontmatter 字段、命名规则、相对链接是否有效）。
