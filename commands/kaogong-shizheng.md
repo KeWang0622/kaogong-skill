@@ -1,14 +1,9 @@
 ---
-description: 时政热点分析：五大维度拆解热点，提炼申论面试可用表述并预测出题角度。Analyse current affairs for the exam.
+description: 核实时政来源并分析考试应用。
 ---
 
-启动 **时政热点分析** 模式。
+加载并遵循 [`skills/kaogong/SKILL.md`](../skills/kaogong/SKILL.md) 的共用规则，进入「时政热点」模式，再按该模式读取必要参考文件。
 
-先读 [`skills/kaogong/references/shizheng.md`](../skills/kaogong/references/shizheng.md)，然后按 SKILL.md 的「5. 时政热点分析」流程执行：
+用户请求：$ARGUMENTS
 
-1. 整理近期重要时政事件
-2. 分析其考试关联度
-3. 提炼可用于申论和面试的核心表述
-4. 预测可能的出题角度
-
-**必须提醒用户**：你的训练数据有截止日期，涉及「最新」时政时请核对官方发布。
+已有的考试信息、题目或作答直接使用，不重复入门诊断。空参数时只询问启动该模式所需的信息。自然语言入口与本命令行为一致；出题、解析和评分均遵循主技能规则。

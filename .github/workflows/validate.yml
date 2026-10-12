@@ -23,6 +23,9 @@ jobs:
       - name: Validate skills, commands and manifests
         run: python3 scripts/validate.py
 
+      - name: Test portable bundles and installer
+        run: python3 -m unittest discover -s tests
+
       - name: Verify dist/ is in sync with skills/
         run: |
           python3 scripts/build-bundle.py

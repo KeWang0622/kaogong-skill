@@ -1,13 +1,9 @@
 ---
-description: 结构化面试模拟：随机出题，从内容/结构/逻辑/表达四维点评并打分。Run a mock Chinese structured interview with scored feedback.
+description: 结构化面试训练与可观察维度反馈。
 ---
 
-启动 **结构化面试模拟** 模式。
+加载并遵循 [`skills/kaogong/SKILL.md`](../skills/kaogong/SKILL.md) 的共用规则，进入「面试模拟」模式，再按该模式读取必要参考文件。
 
-先读 [`skills/kaogong/references/mianshi.md`](../skills/kaogong/references/mianshi.md)，然后按 SKILL.md 的「4. 面试模拟」流程执行：
+用户请求：$ARGUMENTS
 
-1. 随机出一道面试题（标注题型），提示「建议思考 30 秒后作答」
-2. 等用户作答
-3. 从内容充实度、结构清晰度、逻辑严密性、语言表达、亮点与不足五个角度点评
-4. 给出百分制评分和改进建议
-5. 提供参考答案**框架**（不是让用户背诵的模板）
+已有的考试信息、题目或作答直接使用，不重复入门诊断。空参数时只询问启动该模式所需的信息。自然语言入口与本命令行为一致；出题、解析和评分均遵循主技能规则。

@@ -24,10 +24,15 @@ DIST = ROOT / "dist"
 REPO = "https://github.com/KeWang0622/kaogong-skill"
 
 # Order matters: routing first, then knowledge, sources last.
-REFERENCE_ORDER = ["xingce", "shenlun", "mianshi", "shizheng", "baokao", "SOURCES"]
+REFERENCE_ORDER = ["xingce", "shenlun", "zhice", "zongying", "gongji", "gongwen", "mianshi", "shizheng", "baokao", "review", "SOURCES"]
 SECTION_NAMES = {
     "xingce": "行测",
     "shenlun": "申论",
+    "zhice": "职测",
+    "zongying": "综应",
+    "gongji": "公基",
+    "gongwen": "公文",
+    "review": "错题复盘",
     "mianshi": "面试",
     "shizheng": "时政热点",
     "baokao": "报考全流程",
@@ -81,6 +86,7 @@ def header(title: str) -> str:
 
 
 def build_full() -> str:
+    validate_references()
     body = strip_frontmatter((SKILL_DIR / "SKILL.md").read_text(encoding="utf-8"))
     # Once inlined there are no separate files, so point at the sections below.
     body = READ_FIRST.sub(lambda m: f"参考下方《{SECTION_NAMES[m.group(1)]}》章节，然后：\n\n", body)
@@ -89,11 +95,8 @@ def build_full() -> str:
     parts = [header("考公AI导师 — 完整单文件版"), body, "\n\n"]
     for stem in REFERENCE_ORDER:
         path = SKILL_DIR / "references" / f"{stem}.md"
-        if not path.exists():
-            print(f"warning: missing reference {path.name}", file=sys.stderr)
-            continue
         content = path.read_text(encoding="utf-8")
-        content = content.split("\n> 返回 [SKILL.md]")[0].rstrip()
+        content = re.sub(r"^> 返回 \[SKILL\.md\].*$", "", content, flags=re.M).rstrip()
         # Cross-references between inlined files become section pointers.
         content = re.sub(
             r"\[([^\]]*)\]\((\w+)\.md\)",
@@ -106,12 +109,27 @@ def build_full() -> str:
 
 
 
+def validate_references() -> None:
+    """Fail instead of silently shipping an incomplete knowledge bundle."""
+    actual = {p.stem for p in (SKILL_DIR / "references").glob("*.md")}
+    expected = set(REFERENCE_ORDER)
+    if actual != expected or len(expected) != len(REFERENCE_ORDER):
+        raise ValueError(
+            f"Reference inventory mismatch: missing={sorted(expected - actual)}, "
+            f"unregistered={sorted(actual - expected)}; each reference must appear once"
+        )
+    body = (SKILL_DIR / "SKILL.md").read_text(encoding="utf-8")
+    routed = set(REF_LINK.findall(body))
+    if routed != expected or set(SECTION_NAMES) != expected:
+        raise ValueError("Every reference needs an entrypoint link and a bundle section name")
+
+
 def build_compact() -> str:
     body = strip_frontmatter((SKILL_DIR / "SKILL.md").read_text(encoding="utf-8"))
     # Drop the routing table: there are no separate files to route to here.
-    if "## 知识库路由" in body and "## 六种工作模式" in body:
-        head, _, rest = body.partition("## 知识库路由")
-        body = head + "## 六种工作模式" + rest.partition("## 六种工作模式")[2]
+    body, count = re.subn(r"^## 知识库路由[^\n]*\n.*?(?=^## )", "", body, count=1, flags=re.M | re.S)
+    if count != 1:
+        raise ValueError("Expected one knowledge routing section in SKILL.md")
     # No knowledge base ships with the compact build, so drop the "read X first"
     # lead-ins entirely rather than pointing at files that are not there.
     body = READ_FIRST.sub("执行以下流程：\n\n", body)
@@ -119,7 +137,8 @@ def build_compact() -> str:
     body = absolutize(body, SKILL_DIR)
     note = (
         "> **精简版说明**：本文件只包含行为指令，不含详细知识库（题型详解、评分标准、"
-        "制度依据）。需要完整版请使用 [`kaogong-full.md`](kaogong-full.md)。\n\n"
+        "制度依据）。文中的章节名称指上传的完整版知识；未提供时不要假装已读取。"
+        "需要完整版请使用 [`kaogong-full.md`](kaogong-full.md)。\n\n"
     )
     return header("考公AI导师 — 精简版（可粘贴进 Custom GPT 指令框）") + note + body
 
@@ -132,10 +151,8 @@ def write(path: Path, content: str) -> None:
 
 def main() -> int:
     print("Building portable bundles…")
-    write(DIST / "kaogong-full.md", build_full())
-
+    full = build_full()
     compact = build_compact()
-    write(DIST / "kaogong-compact.md", compact)
     if len(compact) > CUSTOM_GPT_LIMIT:
         print(
             f"\n✗ kaogong-compact.md is {len(compact):,} chars, over the "
@@ -144,6 +161,8 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
+    write(DIST / "kaogong-full.md", full)
+    write(DIST / "kaogong-compact.md", compact)
     print(f"\n✓ compact build fits Custom GPT ({len(compact):,} / {CUSTOM_GPT_LIMIT:,} chars)")
     return 0
 

@@ -1,13 +1,9 @@
 ---
-description: 考公备考入门诊断：了解你的考试类型、阶段和薄弱项，给出针对性学习路径。Start Chinese civil service exam prep with a diagnostic intake.
+description: 识别目标考试、地区、类别与学习需求。
 ---
 
-启动 **考公AI导师** 的入门诊断模式。
+加载并遵循 [`skills/kaogong/SKILL.md`](../skills/kaogong/SKILL.md) 的共用规则，进入「入门诊断」模式，再按该模式读取必要参考文件。
 
-加载 [`skills/kaogong/SKILL.md`](../skills/kaogong/SKILL.md)，执行「1. 入门诊断」流程：
+用户请求：$ARGUMENTS
 
-1. 简短自我介绍（两句话以内）
-2. 一次问完四个问题：国考还是省考（哪个省）／备考阶段／薄弱模块／每天可用时间
-3. 根据回答给出学习路径建议，并推荐下一步进入哪个模式
-
-用户若不想回答，直接问「想先练哪一块？」即可。
+已有的考试信息、题目或作答直接使用，不重复入门诊断。空参数时只询问启动该模式所需的信息。自然语言入口与本命令行为一致；出题、解析和评分均遵循主技能规则。

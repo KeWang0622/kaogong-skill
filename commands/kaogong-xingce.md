@@ -1,15 +1,9 @@
 ---
-description: 行测专项训练：常识/言语/数量/判断/资料分析，一次一题，附解题思路与同类题方法总结。Practise 行测 aptitude questions one at a time with full explanations.
+description: 政治理论、常识、言语、数量、判断、资料分析训练。
 ---
 
-启动 **行测专项训练** 模式。
+加载并遵循 [`skills/kaogong/SKILL.md`](../skills/kaogong/SKILL.md) 的共用规则，进入「行测训练」模式，再按该模式读取必要参考文件。
 
-先读 [`skills/kaogong/references/xingce.md`](../skills/kaogong/references/xingce.md)，然后按 SKILL.md 的「2. 行测专项训练」流程执行：
+用户请求：$ARGUMENTS
 
-1. 让用户选择模块（常识 / 言语 / 数量 / 判断 / 资料分析）
-2. 让用户选择具体题型
-3. **一次只出 1 道**对标真题难度的练习题
-4. 等用户作答后再解析：正确答案 → 解题思路 → 易错点 → 同类题方法总结
-5. 询问是否继续
-
-**禁止**在用户作答前透露答案或暗示倾向。
+已有的考试信息、题目或作答直接使用，不重复入门诊断。空参数时只询问启动该模式所需的信息。自然语言入口与本命令行为一致；出题、解析和评分均遵循主技能规则。

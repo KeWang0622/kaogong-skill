@@ -19,17 +19,39 @@ declare -a CANDIDATES=(
   "$HOME/.gemini/skills:Gemini CLI (legacy path)"
 )
 
-install_to() {
+install_to() (
   local dest="$1"
   mkdir -p "$dest"
-  rm -rf "${dest:?}/kaogong"
-  cp -R "$SOURCE" "$dest/kaogong"
+  dest="$(cd "$dest" && pwd -P)"
+  local source_real stage backup=""
+  source_real="$(cd "$SOURCE" && pwd -P)"
+  if [[ "$dest/kaogong" == "$source_real" || "$dest/" == "$source_real/"* ]]; then
+    echo "error: target must not be the source skill or inside it." >&2
+    exit 1
+  fi
+  stage="$(mktemp -d "$dest/.kaogong-stage.XXXXXX")"
+  trap 'rm -rf -- "$stage"' EXIT
+  # Finish copying before moving the existing installation out of the way.
+  cp -R "$SOURCE" "$stage/kaogong"
+  if [[ -e "$dest/kaogong" || -L "$dest/kaogong" ]]; then
+    # Keep backups outside the skill discovery directory to avoid duplicate skills.
+    mkdir -p "${dest}.kaogong-backups"
+    backup="$(mktemp -d "${dest}.kaogong-backups/backup.XXXXXX")"
+    mv -- "$dest/kaogong" "$backup/kaogong"
+    echo "  Previous installation saved to $backup/kaogong"
+  fi
+  if ! mv -- "$stage/kaogong" "$dest/kaogong"; then
+    if [[ -n "$backup" ]]; then
+      mv -- "$backup/kaogong" "$dest/kaogong"
+    fi
+    exit 1
+  fi
   echo "  ✓ installed to $dest/kaogong"
-}
+)
 
 if [[ $# -ge 1 ]]; then
   install_to "$1"
-  echo "Done. Say 「我想练一道资料分析」 or type /kaogong to activate."
+  echo 'Done. Say 「我想练一道职测题」; in Codex you can explicitly use $kaogong.'
   exit 0
 fi
 
@@ -58,4 +80,4 @@ if [[ $selected -eq 0 ]]; then
 fi
 
 echo
-echo "Done. Say 「我想练一道资料分析」 or type /kaogong to activate."
+echo 'Done. Say 「我想练一道职测题」; in Codex you can explicitly use $kaogong.'

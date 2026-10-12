@@ -8,6 +8,7 @@ body:
       value: |
         感谢纠错！本项目服务真实考生，内容准确性最重要。
         **请尽量附上官方出处**——这能让修正快很多。
+        这是公开 Issue，请删去姓名、身份证号、准考证号、电话及家庭信息。
   - type: input
     id: location
     attributes:
@@ -49,3 +50,13 @@ body:
         - 不确定
     validations:
       required: true
+  - type: input
+    id: context
+    attributes:
+      label: 使用环境（可选）
+      description: 若错误来自 AI 实际回答，请填写客户端、模型、技能版本及是否联网，方便复现。
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 最小复现（可选）
+      description: 提问及出错回答的必要片段；请勿上传含个人信息的完整聊天记录。
